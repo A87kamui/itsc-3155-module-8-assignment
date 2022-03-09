@@ -6,4 +6,27 @@
 <h1 class="mb-5">All Movies</h1>
 <p class="mb-3">See our list of movie ratings below</p>
 <!-- TODO: Feature 1 -->
+<div class="container">
+    <ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Movie</th>
+                    <th scope="col">Rating</th> 
+                </tr>
+            </thead>
+                    <tr>
+                        {% for key, value in movie_dictionary.items() %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                <td>{{ value }}</td>
+                            </tr>    
+                        {% endfor %} 
+                    </tr>
+            <tbody>
+                
+            </tbody>
+        </table>          
+    </ul>
+</div>
 {% endblock %}
