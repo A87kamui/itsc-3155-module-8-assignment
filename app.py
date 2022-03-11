@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request
 from src.repositories.movie_repository import movie_repository_singleton
 
 app = Flask(__name__)
@@ -30,9 +30,6 @@ def create_movie():
 @app.get('/movies/search')
 def search_movies():
     # TODO: Feature 3
-<<<<<<< Updated upstream
-    return render_template('search_movies.html', search_active=True)
-=======
     movie_name = request.form.get('movie')
     searchmovie = movie_repository_singleton.get_movie_by_title(movie_name)
     if searchmovie == None:
@@ -44,4 +41,3 @@ def search_movies():
 # run the application
 if __name__ == "__main__":
    app.run(debug=True)
->>>>>>> Stashed changes
