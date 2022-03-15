@@ -1,12 +1,15 @@
 # TODO: Feature 2
 import pytest
+from flask.testing import FlaskClient
 
 
-
-@pytest.fixture(scope='module')
-
-
-def test_create_movie(client):
-    response = client.post('/movies', data=dict(title='Matrix', director='Wachowski', rating='5'))
-    # test to see if the response is a redirect to the list all movies page
-    assert response.location == 'http://localhost/movies'
+# refeer to app.py in root directory
+def test_create_movie(test_app: FlaskClient):
+    data = {
+        'title': 'The Matrix',
+        'director': 'Wachowski',
+        'rating': 5
+    }
+    response = test_app.post('/movies', data=data)
+    response_data = response.data
+    assert b'<td>The Matrix</td>' in response_data
